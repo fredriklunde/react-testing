@@ -1,6 +1,6 @@
-import {combinedReducers} from 'redux'
+import { combineReducers } from 'redux'
 import commentsReducer from './comments'
 
-export default combinedReducers({
+export default combineReducers({
     comments: commentsReducer
 })
