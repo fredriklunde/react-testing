@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import * as actions from '../actions'
 import CommentBox from './CommentBox';
 import CommentList from './CommentList';
 
@@ -8,16 +9,18 @@ class App extends React.Component {
     renderButton() {
         if(this.props.auth){
             return(
-                <button>
+                <button onClick={() => this.props.changeAuth(false)}>
                     Sign Out
                 </button>
             );
+        } else{
+            return(
+                <button onClick={() => this.props.changeAuth(true)}>
+                    Sign in
+                </button>
+            );
         }
-        return(
-            <button>
-                Sign in
-            </button>
-        )
+
     }
     renderHeader() {
         return (
@@ -52,4 +55,4 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, actions)(App);
